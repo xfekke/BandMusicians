@@ -1,4 +1,4 @@
-class Band {
+export class Band {
   constructor(name, info, formedYear, disbandedYear, members, formerMembers) {
     this.name = name;
     this.info = info;

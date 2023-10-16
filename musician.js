@@ -1,4 +1,4 @@
-class Musician {
+export class Musician {
   constructor(name, info, birthYear, bands, formerBands, instruments) {
     this.name = name;
     this.info = info;
