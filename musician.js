@@ -8,3 +8,5 @@ class Musician {
     this.instruments = instruments;
   }
 }
+
+//Lägg in funktioner här
