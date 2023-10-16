@@ -28,6 +28,8 @@ console.log("1. Create band")
 console.log("5. Show bands")
 console.log("2. Remove band")
 
+
+
 let menyOption = prompt("Enter your option - ")
 
 switch (menyOption) {
