@@ -6,10 +6,10 @@
 //JSON för band, JSON för musiker
 
 //import PromptSync from "prompt-sync";
-import { Musician } from "./musician";
+import { Musician } from "../musician";
 import { Band } from "./band"
 const prompt = PromptSync({ sigint: true})
-const fs = require('fs');
+
 
 
 
