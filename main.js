@@ -5,12 +5,14 @@
 //Band kan vara arvgivare till musiker
 //JSON för band, JSON för musiker
 
-
+import PromptSync from "prompt-sync";
+const prompt = PromptSync({ sigint: true})
 const fs = require('fs');
 const Band = require('./band');
 const Musician = require('./musician');
 
-const savedInfo = 'savedInfo.json'
+const musicianInfo = 'musicianInfo.json'
+const bandInfo = 'bandInfo.json'
 
 function saveData() {
   fs.writeFileSync(savedInfo, JSON.stringify(null, 2));
