@@ -32,27 +32,37 @@ console.log("4. Create band")
 console.log("5. Show bands")
 console.log("6. Remove band")
 
-let musicianData = []
 
 let menyOption = prompt("Enter your option - ")
+let musicianData = [];
+try {
+  const oldMusicianData = fs.readFileSync(musicianInfoData);
+  musicianData = JSON.parse(oldMusicianData);
+} catch (error) {
+  musicianData = []
+}
 
 switch (menyOption) {
   case "1":
     const newMusician = createMusician();
 
-    musicianData.push(newMusician);
+    newMusicianArray = [newMusician];
 
-    fs.writeFile('musicianInfo.json', JSON.stringify(newMusician, null, 2), (err) => {
+    musicianData = musicianData.concat(newMusicianArray);
+
+
+    fs.writeFile(musicianInfoData, JSON.stringify(newMusician, null, 2), (err) => {
       if (err) {
         console.error('An error occured:', err);
       } else {
-        console.log('Your result has been saved successfully.');
+        console.log('The musician has been saved.');
       }
     });
 
     break;
 
   case "2":
+    console.log(musicianData);
 
     break;
 

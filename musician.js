@@ -1,4 +1,6 @@
 export class Musician {
+  static musicianCount = 0;
+
   constructor(name, info, birthYear, bands, formerBands, instruments) {
     this.name = name;
     this.info = info;
@@ -6,6 +8,8 @@ export class Musician {
     this.bands = bands;
     this.formerBands = formerBands;
     this.instruments = instruments;
+
+    Musician.musicianCount++;
   }
 }
 
@@ -28,11 +32,11 @@ export function createMusician() {
   const info = prompt("Enter any info about the musician here if you want - ");
 
   do {
-    birthYear = prompt("Enter the musician's birthyear (yyyy-mm-dd) - ");
-    if (birthYear.length !== 8 || isNaN(birthYear)) {
-      console.log("Enter the birthyear in 8 numbers like this: (yyyy-mm-dd)!");
+    birthYear = prompt("Enter the musician's birthyear (4 numbers) - ");
+    if (birthYear.length !== 4 || isNaN(birthYear)) {
+      console.log("You did not enter a valid year)!");
     }
-  } while (birthYear.length !== 8 || isNaN(birthYear));
+  } while (birthYear.length !== 4 || isNaN(birthYear));
 
   do {
     bands = prompt("Enter the musician's bands (separate with commas) - ");
