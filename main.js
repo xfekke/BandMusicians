@@ -38,14 +38,16 @@ try {
   musicianData = JSON.parse(oldMusicianData);
 } catch (error) {
   musicianData = []
+  console.log(error)
 }
+console.log(musicianData)
 switch (menyOption) {
   case "1":
     const newMusician = createMusician();
     musicianData.push(newMusician);
 
 
-    fs.writeFile(musicianInfoData, JSON.stringify(newMusician, null, 2), (err) => {
+    fs.writeFile(musicianInfoData, JSON.stringify(musicianData, null, 2), (err) => {
       if (err) {
         console.error('An error occured:', err);
       } else {

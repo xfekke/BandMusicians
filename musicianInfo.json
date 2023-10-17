@@ -1,12 +1,26 @@
-{
-  "name": "Per",
-  "info": "lol",
-  "birthYear": "11112234",
-  "bands": [
-    "Cannibal Corpse"
-  ],
-  "formerBands": "",
-  "instruments": [
-    "Guitar"
-  ]
-}
+[
+  {
+    "name": "we",
+    "info": "we",
+    "birthYear": "1222",
+    "bands": [
+      "we"
+    ],
+    "formerBands": "sd",
+    "instruments": [
+      "qw"
+    ]
+  },
+  {
+    "name": "23",
+    "info": "23",
+    "birthYear": "1111",
+    "bands": [
+      "323"
+    ],
+    "formerBands": "df",
+    "instruments": [
+      "erer"
+    ]
+  }
+]
