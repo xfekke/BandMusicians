@@ -30,7 +30,7 @@ export function createMusician() {
   do {
     birthYear = prompt("Enter the musician's birthyear (yyyy-mm-dd) - ");
     if (birthYear.length !== 8 || isNaN(birthYear)) {
-      console.log("Enter the birthyear in 8 numbers (yyyy-mm-dd) - ");
+      console.log("Enter the birthyear in 8 numbers like this: (yyyy-mm-dd)!");
     }
   } while (birthYear.length !== 8 || isNaN(birthYear));
 
