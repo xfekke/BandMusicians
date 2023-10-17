@@ -13,16 +13,13 @@ function saveData() {
 
 import PromptSync from "prompt-sync";
 import { Musician, createMusician } from "./musician.js";
-import { Band, createBand } from "./band.js"
+import { Band, createBand } from "./band.js";
 import fs from "fs";
 const prompt = PromptSync({ sigint: true })
 
 //switch break, ta funktioner från js samt klasser. Spara i JSON.
 const musicianInfoData = 'musicianInfo.json';
 const bandInfoData = 'bandInfo.json';
-
-
-
 
 console.log("Hello! What would you like to do?")
 console.log("1. Create musician")

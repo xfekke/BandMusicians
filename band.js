@@ -1,10 +1,30 @@
+export class Band {
+  static bandCount = 0;
+
+  constructor(name, info, formedYear, disbandedYear, members, formerMembers) {
+    this.name = name;
+    this.info = info;
+    this.disbandedYear = disbandedYear;
+    this.formedYear = formedYear;
+    this.members = members;
+    this.formerMembers = formerMembers;
+
+    Band.bandCount++;
+
+  }
+}
+import PromptSync from "prompt-sync";
+const prompt = PromptSync({ sigint: true })
+
 export function createBand() {
+
   let name = '';
   let formedYear = '';
   let bandDisbanded = '';
   let disbandedYear = '';
   let members = '';
   let formerMembers = '';
+
 
   do {
     name = prompt("Enter the band's name - ");
@@ -48,19 +68,29 @@ export function createBand() {
     }
   } while (members.length <= 1);
 
-  console.log("Does the band have any former members?");
-  console.log("1. Yes");
-  console.log("2. No");
 
-  let formerMembersOption = prompt("Enter your option - ");
+  while (true) {
+    console.log("Does the band have any former members?");
+    console.log("1. Yes");
+    console.log("2. No");
 
-  if (formerMembersOption === "1") {
-    formerMembers = prompt("Enter the band's former members (separate with commas) - ");
-  } else if (formerMembersOption === "2") {
-    formerMembers = '';
-  } else {
-    console.log("Invalid option. Please enter 1 or 2.");
+    let formerMembersOption;
+    do {
+      formerMembersOption = prompt("Enter your option - ");
+      if (formerMembersOption === "1") {
+        formerMembers = prompt("Enter the band's former members (separate with commas) - ");
+      } else if (formerMembersOption === "2") {
+        formerMembers = '';
+      } else {
+        console.log("Invalid option. Please enter 1 or 2.");
+      }
+    } while (formerMembersOption !== "1" && formerMembersOption !== "2");
+
+    return new Band(name, info, formedYear, disbandedYear, members.split(","), formerMembers.split(","));
   }
+
+
+
 
   return new Band(name, info, formedYear, disbandedYear, members.split(","), formerMembers.split(","));
 }
