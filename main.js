@@ -15,7 +15,7 @@ import PromptSync from "prompt-sync";
 import { Musician, createMusician } from "./musician.js";
 import { Band, createBand } from "./band.js";
 import fs from "fs";
-const prompt = PromptSync({ sigint: true })
+const prompt = PromptSync({ sigint: true })96
 
 //switch break, ta funktioner från js samt klasser. Spara i JSON.
 const musicianInfoData = 'musicianInfo.json';
