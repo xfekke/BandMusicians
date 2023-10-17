@@ -42,7 +42,7 @@ switch (menyOption) {
 
     let musicianData = [];
     try {
-      const existingData = fs.readFileSync(musicianData)
+      const existingData = fs.readFileSync(musicianData);
       musicianData = JSON.parse(existingData);
     } catch (error) {
 
