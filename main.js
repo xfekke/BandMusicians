@@ -41,14 +41,11 @@ try {
 } catch (error) {
   musicianData = []
 }
-
+//case 1 funkar ej
 switch (menyOption) {
   case "1":
     const newMusician = createMusician();
-
-    newMusicianArray = [newMusician];
-
-    musicianData = musicianData.concat(newMusicianArray);
+    musicianData.push(newMusician);
 
 
     fs.writeFile(musicianInfoData, JSON.stringify(newMusician, null, 2), (err) => {
