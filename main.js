@@ -38,7 +38,6 @@ try {
 } catch (error) {
   musicianData = []
 }
-//case 1 funkar ej
 switch (menyOption) {
   case "1":
     const newMusician = createMusician();
@@ -63,6 +62,7 @@ switch (menyOption) {
   case "4":
     const newBand = createBand();
     console.log(newBand);
+    break;
 
   default:
     console.log("You did not enter a valid option.")

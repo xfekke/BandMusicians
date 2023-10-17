@@ -69,28 +69,23 @@ export function createBand() {
   } while (members.length <= 1);
 
 
-  while (true) {
-    console.log("Does the band have any former members?");
-    console.log("1. Yes");
-    console.log("2. No");
 
-    let formerMembersOption;
-    do {
-      formerMembersOption = prompt("Enter your option - ");
-      if (formerMembersOption === "1") {
-        formerMembers = prompt("Enter the band's former members (separate with commas) - ");
-      } else if (formerMembersOption === "2") {
-        formerMembers = '';
-      } else {
-        console.log("Invalid option. Please enter 1 or 2.");
-      }
-    } while (formerMembersOption !== "1" && formerMembersOption !== "2");
+  console.log("Does the band have any former members?");
+  console.log("1. Yes");
+  console.log("2. No");
 
-    return new Band(name, info, formedYear, disbandedYear, members.split(","), formerMembers.split(","));
-  }
-
-
-
+  let formerMembersOption;
+  do {
+    formerMembersOption = prompt("Enter your option - ");
+    if (formerMembersOption === "1") {
+      formerMembers = prompt("Enter the band's former members (separate with commas) - ");
+    } else if (formerMembersOption === "2") {
+      formerMembers = '';
+    } else {
+      console.log("Invalid option. Please enter 1 or 2.");
+    }
+  } while (formerMembersOption !== "1" && formerMembersOption !== "2");
 
   return new Band(name, info, formedYear, disbandedYear, members.split(","), formerMembers.split(","));
+
 }
