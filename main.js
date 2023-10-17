@@ -39,13 +39,23 @@ let menyOption = prompt("Enter your option - ")
 switch (menyOption) {
   case "1":
     const newMusician = createMusician();
-    console.log('New musician has been created ' + newMusician.name)
-    console.log(newMusician)
+
+    let musicianData = [];
+    try {
+      const existingData = fs.readFileSync(musicianData)
+      musicianData = JSON.parse(existingData);
+    } catch (error) {
+
+    }
 
     musicianData.push(newMusician);
 
-    const musicianData = JSON.stringify(newMusician, null, 2);
-    fs.writeFileSync(musicianInfoData, musicianData)
+    const musicianList = JSON.stringify(musicianData, null, 2);
+
+    fs.writeFileSync(musicianInfoData, musicianList);
+
+    console.log('New musician has been created ' + newMusician.name)
+    console.log(newMusician)
     break;
 
   case "2":
