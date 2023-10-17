@@ -52,10 +52,3 @@ export function createMusician() {
 
   return new Musician(name, info, birthYear, bands.split(","), formerBands, instruments.split(","));
 }
-
-
-
-
-
-
-//Lägg in funktioner här

@@ -32,7 +32,7 @@ console.log("4. Create band")
 console.log("5. Show bands")
 console.log("6. Remove band")
 
-
+let musicianData = []
 
 let menyOption = prompt("Enter your option - ")
 
@@ -40,22 +40,16 @@ switch (menyOption) {
   case "1":
     const newMusician = createMusician();
 
-    let musicianData = [];
-    try {
-      const existingData = fs.readFileSync(musicianData);
-      musicianData = JSON.parse(existingData);
-    } catch (error) {
-
-    }
-
     musicianData.push(newMusician);
 
-    const musicianList = JSON.stringify(musicianData, null, 2);
+    fs.writeFile('musicianInfo.json', JSON.stringify(newMusician, null, 2), (err) => {
+      if (err) {
+        console.error('An error occured:', err);
+      } else {
+        console.log('Your result has been saved successfully.');
+      }
+    });
 
-    fs.writeFileSync(musicianInfoData, musicianList);
-
-    console.log('New musician has been created ' + newMusician.name)
-    console.log(newMusician)
     break;
 
   case "2":

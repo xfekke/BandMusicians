@@ -1,14 +1,13 @@
-[
-  {
-    "name": "Fekkerino",
-    "info": "yup",
-    "birthYear": "12234455",
-    "bands": [
-      "sd"
-    ],
-    "formerBands": "nope",
-    "instruments": [
-      "Flamethrower"
-    ]
-  }
-]
+{
+  "name": "bop",
+  "info": "sd",
+  "birthYear": "22223344",
+  "bands": [
+    "hej",
+    " d"
+  ],
+  "formerBands": "jaha",
+  "instruments": [
+    "boll"
+  ]
+}
