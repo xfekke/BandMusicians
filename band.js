@@ -1,23 +1,10 @@
-export class Band {
-  constructor(name, info, formedYear, disbandedYear, members, formerMembers) {
-    this.name = name;
-    this.info = info;
-    this.formedYear = formedYear;
-    this.disbandedYear = disbandedYear;
-    this.members = members;
-    this.formerMembers = formerMembers;
-  }
-}
-
-import PromptSync from "prompt-sync";
-const prompt = PromptSync({ sigint: true })
-
 export function createBand() {
   let name = '';
   let formedYear = '';
-  let bands = '';
   let bandDisbanded = '';
   let disbandedYear = '';
+  let members = '';
+  let formerMembers = '';
 
   do {
     name = prompt("Enter the band's name - ");
@@ -31,29 +18,28 @@ export function createBand() {
   do {
     formedYear = prompt("Enter the year the band was formed (4 numbers) - ");
     if (formedYear.length !== 4 || isNaN(formedYear)) {
-      console.log("You did not enter a valid year)!");
+      console.log("You did not enter a valid year!");
     }
-  } while (birthYear.length !== 4 || isNaN(birthYear));
+  } while (formedYear.length !== 4 || isNaN(formedYear));
 
-  console.log("Is the band still going?")
-  console.log("1. Yes")
-  console.log("2. No")
-  do {
-    bandDisbanded = prompt("Enter your option - ");
-    if (bandDisbanded == 2) {
-      disbandedYear = prompt("What year did they disband? (4 numbers) - ");
+  console.log("Is the band still going?");
+  console.log("1. Yes");
+  console.log("2. No");
+
+  bandDisbanded = prompt("Enter your option - ");
+
+  if (bandDisbanded === "2") {
+    disbandedYear = prompt("What year did they disband? (4 numbers) - ");
+    if (disbandedYear.length !== 4 || isNaN(disbandedYear)) {
+      console.log("You did not enter a valid year!");
+    } else {
+      console.log(`The band disbanded in ${disbandedYear}.`);
     }
-  } while (bandDisbanded !== 1 || bandDisbanded !== 2);
-
-
-  do {
-    bands = prompt("Enter the musician's bands (separate with commas) - ");
-    if (bands.length <= 1) {
-      console.log("You have to enter at least 2 characters.");
-    }
-  } while (bands.length <= 1);
-
-  const formerBands = prompt("Enter the musician's former bands if he/she had any - ");
+  } else if (bandDisbanded === "1") {
+    console.log("The band is still going.");
+  } else {
+    console.log("Invalid option. Please enter 1 or 2.");
+  }
 
   do {
     members = prompt("Enter the band's members (separate with commas) - ");
@@ -62,17 +48,19 @@ export function createBand() {
     }
   } while (members.length <= 1);
 
-  console.log("Does the band have any former members?")
-  console.log("1. Yes")
-  console.log("2. No")
-  do {
-    formerMembers = prompt("Enter your option - ");
-    if (formerMembers == 1) {
-      formerMembers = prompt("Enter the band's former members (separate with commas) - ");
-    }
-  } while (formerMembers !== 1 || formerMembers !== 2);
+  console.log("Does the band have any former members?");
+  console.log("1. Yes");
+  console.log("2. No");
 
+  let formerMembersOption = prompt("Enter your option - ");
 
+  if (formerMembersOption === "1") {
+    formerMembers = prompt("Enter the band's former members (separate with commas) - ");
+  } else if (formerMembersOption === "2") {
+    formerMembers = '';
+  } else {
+    console.log("Invalid option. Please enter 1 or 2.");
+  }
 
-  return new Musician(name, info, birthYear, bands.split(","), formerBands, instruments.split(","));
+  return new Band(name, info, formedYear, disbandedYear, members.split(","), formerMembers.split(","));
 }

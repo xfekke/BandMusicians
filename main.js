@@ -13,7 +13,7 @@ function saveData() {
 
 import PromptSync from "prompt-sync";
 import { Musician, createMusician } from "./musician.js";
-import { Band } from "./band.js"
+import { Band, createBand } from "./band.js"
 import fs from "fs";
 const prompt = PromptSync({ sigint: true })
 
@@ -62,6 +62,10 @@ switch (menyOption) {
     console.log(musicianData);
 
     break;
+
+  case "4":
+    const newBand = createBand();
+    console.log(newBand);
 
   default:
     console.log("You did not enter a valid option.")
