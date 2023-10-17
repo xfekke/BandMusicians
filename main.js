@@ -32,6 +32,7 @@ console.log("6. Remove band")
 
 let menyOption = prompt("Enter your option - ")
 let musicianData = [];
+let bandData = [];
 try {
   const oldMusicianData = fs.readFileSync(musicianInfoData);
   musicianData = JSON.parse(oldMusicianData);
@@ -61,7 +62,17 @@ switch (menyOption) {
 
   case "4":
     const newBand = createBand();
-    console.log(newBand);
+    bandData.push(newBand);
+
+
+    fs.writeFile(bandInfoData, JSON.stringify(newBand, null, 2), (err) => {
+      if (err) {
+        console.error('An error occured:', err);
+      } else {
+        console.log('The band has been saved.');
+      }
+    });
+
     break;
 
   default:
