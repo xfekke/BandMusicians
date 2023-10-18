@@ -70,6 +70,11 @@ switch (menyOption) {
 
     break;
 
+  case "3":
+    Musician.RemoveMusician();
+
+    break;
+
   case "4":
     const newBand = createBand();
     bandData.push(newBand);
