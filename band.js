@@ -21,8 +21,8 @@ export function createBand() {
   let formedYear = '';
   let bandDisbanded = '';
   let disbandedYear = '';
-  let members;
-  let bandCondition = true;
+  let members = '';
+  let formerMembers = '';
 
   do {
     name = prompt("Enter the band's name - ");
@@ -63,15 +63,13 @@ export function createBand() {
     }
   } while (true);
 
-
-
   if (bandDisbanded == 1) {
     do {
       members = prompt("Enter the band's members (separate with commas) - ");
       if (members.length <= 1) {
         console.log("You have to enter at least 2 characters.");
       } else {
-        console.log("You have added the musicians.");
+        console.log("You have added the members.");
       }
     } while (members.length <= 1);
   }
@@ -80,19 +78,22 @@ export function createBand() {
   console.log("1. Yes");
   console.log("2. No");
 
-
-  /*while (true) {
-    formerMembers = prompt("Enter your option - ");
-    if (formerMembers === "1") {
-      formerMembers = prompt("Enter the band's former members (separate with commas) - ");
-      break;
-    } else if (formerMembers === "2") {
-      formerMembers = '';
-      break;
-    } else {
-      console.log("Invalid option. Please enter 1 or 2.");
-    }
+  if (bandDisbanded == 2) {
+    do {
+      formerMembers = prompt("Enter the band's former members (seperate with commas) - ");
+      if (formerMembers.length <= 1) {
+        console.log("You have to enter at least 2 characters.");
+      } else {
+        console.log("You have added the former members.");
+      }
+    } while (members.length <= 1);
   }
-  */
+
+  if (bandDisbanded == 1) {
+    formerMembers = prompt("Enter the band's former members (seperate with commas) - ");
+  } else {
+    console.log("You did not add any former members")
+  }
+
   return new Band(name, info, formedYear, disbandedYear, members.split(","), formerMembers.split(","));
 }
