@@ -15,7 +15,7 @@ import PromptSync from "prompt-sync";
 import { Musician, createMusician } from "./musician.js";
 import { Band, createBand } from "./band.js";
 import fs from "fs";
-const prompt = PromptSync({ sigint: true })96
+const prompt = PromptSync({ sigint: true })
 
 //switch break, ta funktioner från js samt klasser. Spara i JSON.
 const musicianInfoData = 'musicianInfo.json';
@@ -40,7 +40,15 @@ try {
   musicianData = []
   console.log(error)
 }
-console.log(musicianData)
+
+try {
+  const oldBandData = fs.readFileSync(bandInfoData);
+  bandData = JSON.parse(oldBandData);
+} catch (error) {
+  bandData = []
+  console.log(error)
+}
+
 switch (menyOption) {
   case "1":
     const newMusician = createMusician();
@@ -67,7 +75,7 @@ switch (menyOption) {
     bandData.push(newBand);
 
 
-    fs.writeFile(bandInfoData, JSON.stringify(newBand, null, 2), (err) => {
+    fs.writeFile(bandInfoData, JSON.stringify(bandData, null, 2), (err) => {
       if (err) {
         console.error('An error occured:', err);
       } else {
