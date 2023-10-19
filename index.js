@@ -14,9 +14,10 @@ let existingMusician = []; //Musicians in the JSON
 let updatedMusician = []; //New variable for musicians to save in JSON
 
 try {
-  const jsonMusician = fs.readFileSync('musicianInfo.json');
+  const jsonMusician = fs.readFileSync(musicianInfoData);
   existingMusician = JSON.parse(jsonMusician);
 } catch (error) {
+  existingMusician = []
   console.error("Error reading JSON file" + error);
 }
 
@@ -39,6 +40,7 @@ while (true) {
 
 
     case "2":
+      console.log(jsonMusician);
 
       break;
 
@@ -86,20 +88,24 @@ function createMusician() {
       console.log("You have to enter at least 2 characters!");
     }
   } while (instruments.length < 2);
-  const newMusician = new Musician(name, birthYear, bands, formerBands, instruments);
+
+  const newMusician = new Musician(name, info, birthYear, bands, formerBands, instruments);
   console.log(newMusician);
   existingMusician.push(newMusician);
 
+  console.log(updatedMusician);
   console.log("The musician has been saved!");
+  console.log(newMusician);
 
-  updatedMusician += newMusician
+
 
   fs.writeFile(musicianInfoData, JSON.stringify(existingMusician, null, 2), (err) => {
+    console.log("Hello");
     if (err) {
       console.error("An error occurred: " + err);
     } else {
       console.log("Musician has been saved to the JSON.");
     }
-  });
+  }); console.log("Bye");
 }
 
