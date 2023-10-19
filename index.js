@@ -91,7 +91,11 @@ function createMusician() {
 
   const newMusician = new Musician(name, info, birthYear, bands, formerBands, instruments);
   console.log(newMusician);
-  existingMusician.push(newMusician);
+
+  let savedMusician = newMusician + existingMusician;
+
+
+  savedMusician.push(musicianInfoData);
 
   console.log(updatedMusician);
   console.log("The musician has been saved!");
@@ -99,7 +103,7 @@ function createMusician() {
 
 
 
-  fs.writeFile(musicianInfoData, JSON.stringify(existingMusician, null, 2), (err) => {
+  fs.writeFile('musicianInfo.json', JSON.stringify(newMusician, null, 2), (err) => {
     console.log("Hello");
     if (err) {
       console.error("An error occurred: " + err);
