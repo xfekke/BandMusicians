@@ -1,32 +1,19 @@
-//Ska kunna mata in band och musiker
-//Ska sparas i JSON
-//Ska kunna läsa info från JSON
-
-//Band kan vara arvgivare till musiker
-//JSON för band, JSON för musiker
-//while true funktion för att se till att namn prompts är 2 eller fler bokstäver
-/*
-function saveData() {
-  fs.writeFileSync(savedInfo, JSON.stringify(null, 2));
-}
-*/
-
 import PromptSync from "prompt-sync";
-import { Musician } from "./musician.js";
-import { Band, createBand } from "./band.js";
+import { Musician } from "./musicianIndex.js";
+import { Band } from "./bandIndex.js";
 import fs from "fs";
 const prompt = PromptSync({ sigint: true })
-
-//switch break, ta funktioner från js samt klasser. Spara i JSON.
 const musicianInfoData = 'musicianInfo.json';
 const bandInfoData = 'bandInfo.json';
+//1. Add Musician - 2. Add Band - 3. Remove musician - 4. Remove Band - 5. Add musician to band - 6. remove musician from band
+//7. Info about musician - 8. Info about band - 9. Quit
 
 
 
 
-let menyOption;
-let musicianData = [];
-let bandData = [];
+let menyOption; //Meny variable
+let musicianData = [];//Musicians in JSON
+let bandData = []; //Bands in JSON
 try {
   const oldMusicianData = fs.readFileSync(musicianInfoData);
   musicianData = JSON.parse(oldMusicianData);
@@ -114,4 +101,49 @@ function removeMusicianx() {
 
   console.log(musicianData);
   prompt("Press enter to continue");
+}
+
+function createMusician() {
+  let name = '';
+  let birthYear = '';
+  let bands = '';
+  let instruments = '';
+
+  do {
+    name = prompt("Enter the musician's name - ");
+    if (name.length <= 1) {
+      console.log("You have to enter at least 2 characters.");
+    }
+  } while (name.length <= 1);
+
+  const info = prompt("Enter any info about the musician here if you want - ");
+
+  do {
+    birthYear = prompt("Enter the musician's birthyear (4 numbers) - ");
+    if (birthYear.length !== 4 || isNaN(birthYear)) {
+      console.log("You did not enter a valid year)!");
+    }
+  } while (birthYear.length !== 4 || isNaN(birthYear));
+
+  do {
+    bands = prompt("Enter the musician's bands (separate with commas) - ");
+    if (bands.length <= 1) {
+      console.log("You have to enter at least 2 characters.");
+    }
+  } while (bands.length <= 1);
+
+  const formerBands = prompt("Enter the musician's former bands if he/she had any - ");
+
+  do {
+    instruments = prompt("Enter the musician's instruments (separate with commas) - ");
+    if (instruments.length <= 1) {
+      console.log("You have to enter at least 2 characters.");
+    }
+  } while (instruments.length <= 1);
+
+
+  console.log(Musician);
+  return new Musician(name, info, birthYear, bands.split(","), formerBands, instruments.split(","));
+
+
 }

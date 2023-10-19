@@ -34,6 +34,15 @@ while (true) {
   switch (menyOption) {
     case "1":
       const newMusician = createMusician();
+      existingMusician.push(newMusician)
+
+      fs.writeFile(musicianInfoData, JSON.stringify(existingMusician, null, 2), (err) => {
+        if (err) {
+          console.error('An error occured:', err);
+        } else {
+          console.log('The musician has been saved.');
+        }
+      });
 
 
       break;
@@ -48,68 +57,152 @@ while (true) {
 }
 
 
+// function createMusician() {
+//   let name = '';
+//   let birthYear = '';
+//   let bands = '';
+//   let instruments = '';
+//   let info = '';
+//   let formerBands = '';
+
+//   do {
+//     name = prompt("Enter the musician's name - ");
+//     if (name.length < 2) {
+//       console.log("You have to enter at least 2 characters!");
+//     }
+//   } while (name.length < 2);
+
+//   info = prompt("Enter any info about the musician here if you want - ");
+
+//   do {
+//     birthYear = prompt("Enter the musician's birthyear (4 numbers) - ");
+//     if (birthYear.length != 4 || isNaN(birthYear)); {
+//       console.log("You did not enter a valid year!");
+//     }
+//   } while (birthYear.length != 4 || isNaN(birthYear));
+
+
+//   do {
+//     bands = prompt("Enter the musician's current bands (separate with commas) -");
+//     if (bands.length < 2) {
+//       console.log("You have to enter at least 2 characters!");
+//     }
+//   } while (bands.length < 2);
+
+//   formerBands = prompt("Enter the musician's former bands if he/she had any (separate with commas) - ");
+
+//   do {
+//     instruments = prompt("Enter the musician's instruments (separate with commas) - ");
+//     if (instruments.length < 2) {
+//       console.log("You have to enter at least 2 characters!");
+//     }
+//   } while (instruments.length < 2);
+
+//   const newMusician = new Musician(name, info, birthYear, bands, formerBands, instruments);
+//   console.log(newMusician);
+
+//   savedMusician.push(musicianInfoData);
+
+//   console.log(updatedMusician);
+//   console.log("The musician has been saved!");
+//   console.log(newMusician);
+
+
+
+//   fs.writeFile('musicianInfo.json', JSON.stringify(newMusician, null, 2), (err) => {
+//     console.log("Hello");
+//     if (err) {
+//       console.error("An error occurred: " + err);
+//     } else {
+//       console.log("Musician has been saved to the JSON.");
+//     }
+//   }); console.log("Bye");
+// }
+// export function createMusician() {
+//   let name = '';
+//   let birthYear = '';
+//   let bands = '';
+//   let instruments = '';
+
+//   do {
+//     name = prompt("Enter the musician's name - ");
+//     if (name.length <= 1) {
+//       console.log("You have to enter at least 2 characters.");
+//     }
+//   } while (name.length <= 1);
+
+//   const info = prompt("Enter any info about the musician here if you want - ");
+
+//   do {
+//     birthYear = prompt("Enter the musician's birthyear (4 numbers) - ");
+//     if (birthYear.length !== 4 || isNaN(birthYear)) {
+//       console.log("You did not enter a valid year)!");
+//     }
+//   } while (birthYear.length !== 4 || isNaN(birthYear));
+
+//   do {
+//     bands = prompt("Enter the musician's bands (separate with commas) - ");
+//     if (bands.length <= 1) {
+//       console.log("You have to enter at least 2 characters.");
+//     }
+//   } while (bands.length <= 1);
+
+//   const formerBands = prompt("Enter the musician's former bands if he/she had any - ");
+
+//   do {
+//     instruments = prompt("Enter the musician's instruments (separate with commas) - ");
+//     if (instruments.length <= 1) {
+//       console.log("You have to enter at least 2 characters.");
+//     }
+//   } while (instruments.length <= 1);
+
+//   return new Musician(name, info, birthYear, bands.split(","), formerBands, instruments.split(","));
+// }
+
+
+
+
 function createMusician() {
   let name = '';
   let birthYear = '';
   let bands = '';
   let instruments = '';
-  let info = '';
-  let formerBands = '';
 
   do {
     name = prompt("Enter the musician's name - ");
-    if (name.length < 2) {
-      console.log("You have to enter at least 2 characters!");
+    if (name.length <= 1) {
+      console.log("You have to enter at least 2 characters.");
     }
-  } while (name.length < 2);
+  } while (name.length <= 1);
 
-  info = prompt("Enter any info about the musician here if you want - ");
+  const info = prompt("Enter any info about the musician here if you want - ");
 
   do {
     birthYear = prompt("Enter the musician's birthyear (4 numbers) - ");
-    if (birthYear.length != 4 || isNaN(birthYear)); {
-      console.log("You did not enter a valid year!");
+    if (birthYear.length !== 4 || isNaN(birthYear)) {
+      console.log("You did not enter a valid year)!");
     }
-  } while (birthYear.length != 4 || isNaN(birthYear));
-
+  } while (birthYear.length !== 4 || isNaN(birthYear));
 
   do {
-    bands = prompt("Enter the musician's current bands (separate with commas) -");
-    if (bands.length < 2) {
-      console.log("You have to enter at least 2 characters!");
+    bands = prompt("Enter the musician's bands (separate with commas) - ");
+    if (bands.length <= 1) {
+      console.log("You have to enter at least 2 characters.");
     }
-  } while (bands.length < 2);
+  } while (bands.length <= 1);
 
-  formerBands = prompt("Enter the musician's former bands if he/she had any (separate with commas) - ");
+  const formerBands = prompt("Enter the musician's former bands if he/she had any - ");
 
   do {
     instruments = prompt("Enter the musician's instruments (separate with commas) - ");
-    if (instruments.length < 2) {
-      console.log("You have to enter at least 2 characters!");
+    if (instruments.length <= 1) {
+      console.log("You have to enter at least 2 characters.");
     }
-  } while (instruments.length < 2);
+  } while (instruments.length <= 1);
 
-  const newMusician = new Musician(name, info, birthYear, bands, formerBands, instruments);
+
   console.log(newMusician);
-
-  let savedMusician = newMusician + existingMusician;
-
-
-  savedMusician.push(musicianInfoData);
-
-  console.log(updatedMusician);
-  console.log("The musician has been saved!");
-  console.log(newMusician);
+  return new Musician(name, info, birthYear, bands.split(","), formerBands, instruments.split(","));
 
 
-
-  fs.writeFile('musicianInfo.json', JSON.stringify(newMusician, null, 2), (err) => {
-    console.log("Hello");
-    if (err) {
-      console.error("An error occurred: " + err);
-    } else {
-      console.log("Musician has been saved to the JSON.");
-    }
-  }); console.log("Bye");
 }
-
