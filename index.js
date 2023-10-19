@@ -87,16 +87,8 @@ function createMusician() {
     }
   } while (instruments.length < 2);
   const newMusician = new Musician(name, birthYear, bands, formerBands, instruments);
-  console.log(newMusician)
-
-  existingMusician.push(newMusician);
-
-  updatedMusician = JSON.stringify(existingMusician, null, 2);
-
-  console.log("The musician has been saved!")
+  console.log(newMusician);
 
 
-
-  return new Musician;
-
+  console.log("The musician has been saved!");
 }
