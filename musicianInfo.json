@@ -1,1 +1,12 @@
-[]
+{
+  "name": "Fekke",
+  "info": "",
+  "birthYear": "1998",
+  "bands": [
+    "Slipknot"
+  ],
+  "formerBands": "Thrown, MIW",
+  "instruments": [
+    "Guitar"
+  ]
+}
