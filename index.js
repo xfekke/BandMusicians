@@ -36,17 +36,7 @@ while (true) {
       const newMusician = createMusician();
       existingMusician.push(newMusician)
 
-      fs.writeFile(musicianInfoData, JSON.stringify(existingMusician, null, 2), (err) => {
-        if (err) {
-          console.error('An error occured:', err);
-        } else {
-          console.log('The musician has been saved.');
-        }
-      });
-
-
       break;
-
 
     case "2":
       console.log(jsonMusician);
@@ -200,9 +190,21 @@ function createMusician() {
     }
   } while (instruments.length <= 1);
 
+  const newMusician = new Musician(name, info, birthYear, bands.split(","), formerBands, instruments.split(","));
+
+  const musicianJSON = JSON.stringify(newMusician, null, 2);
+  fs.writeFileSync('./musicianInfo.json', musicianJSON, 'utf-8', (err) => {
+    if (err) {
+      console.error("Error saving JSON file:", err);
+    } else {
+      console.log("Musician has been saved!");
+    }
+  });
 
   console.log(newMusician);
-  return new Musician(name, info, birthYear, bands.split(","), formerBands, instruments.split(","));
+  return new Musician
 
 
 }
+
+//fs.writeFileSync("./person.json", JSON.stringify(person, null, 2)) //aseer JSON;
