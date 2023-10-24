@@ -8,6 +8,16 @@ import fs from "fs";
 
 import bandsData from './bands.json' assert { type: 'json' };
 
+    // const date = new Date();
+
+    // let day = date.getDate();
+    // let month = date.getMonth() + 1;
+    // let year = date.getFullYear();
+
+
+    // let currentDate = `${year}${month}${day}`;
+    //   console.log(currentDate); 
+
 
 
 const prompt = PromptSync({ sigint: true })
@@ -15,7 +25,7 @@ const musicianList = new Musicians();
 const bandList = new Bands();
 let menyOption; //Meny variable
 //1. Add Musician - 2. Add Band - 3. Remove musician - 4. Remove Band - 5. Add musician to band - 6. remove musician from band
-//7. Info about musician - 8. Info about band - 9. Quit
+//7. Info about musician - 8. Info about band - 9. Quit //Add member to band //Remove Musician from band
 
 let run = true
 
@@ -50,6 +60,7 @@ while (run) {
       break;
 
     case "4": //show band
+
 
 
       break;
@@ -91,22 +102,40 @@ function removeMusician() {
 }
 
 function removeBand() {
+  const removingBandList = JSON.parse(fs.readFileSync("bands.json"));
   bandList.printBand();
   const val = prompt("Enter the index of the band you want to remove - ");
 
-  if (Number(val).toString() === "NaN") {
-    console.log("You have to enter a number!");
-  }
-
-  if (val <= bandList.getLength() || val >= 1) {
-
-    const removedBand = bandList.bandList[Number(val) - 1];
-    const removedBandName = removedBand.name;
-    bandList.removeBandFromList(Number(val) - 1);
-    musicianList.updateMusiciansAfterBandRemoval(removedBandName);
+  if (Number(val).toString() === "NaN" || val <= bandList.getLength()) {
+    console.log("You have to enter a valid number!");
   } else {
-    console.log(`The number has to be between 1 and ${bandList.getLength()}`);
+    const index = parseInt(val) - 1;
+  }
+
+  removeBandFromList();
+
+
   }
 
 
-}
+
+  
+
+
+//LISTA är informationen i JSON, det är en separat array
+//const LISTA = JSON.parse(fs.readFileSync("min json fil.json"))
+//console.log(LISTA);
+//LISTA.push("en msuiker t ex") //Här lägger vi till nytt objekt //lista.musiker = "Bengt"
+//LISTA.sort //sortera
+//fs.writeFileSync(LISTA)
+
+//data.push("Bengt") --- data.push("Personer")
+
+//const index = lista.findIndex((a) => a === "Emil") //Nu är Emil 0, position 1
+
+//LISTA[index] = {
+//  name: lista[index],
+//  age: 54
+//} Nu är Emil ett objekt och har age + name
+
+//måste kunna välja de instrument

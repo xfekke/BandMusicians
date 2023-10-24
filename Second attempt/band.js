@@ -48,11 +48,11 @@ export default class Bands {
     info = prompt("Enter any info about the band here if you want - ");
 
     do {
-      formedYear = prompt("Enter the year the band was formed (4 numbers) - ");
-      if (formedYear.length !== 4 || isNaN(formedYear)) {
+      formedYear = prompt("Enter the year the band was formed (yyyymmdd) - ");
+      if (formedYear.length !== 8) {
         console.log("You did not enter a valid year!");
       }
-    } while (formedYear.length !== 4 || isNaN(formedYear));
+    } while (formedYear.length !== 8);
 
     do {
       console.log("Is the band still going?");

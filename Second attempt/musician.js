@@ -3,6 +3,8 @@ import Musician from "./musicianClass.js";
 import PromptSync from "prompt-sync";
 const prompt = PromptSync({ sigint: true })
 
+
+
 export default class Musicians {
   #musicianList = []; // list with all musician objects
 
@@ -33,6 +35,13 @@ export default class Musicians {
   }
 
   addMusicianToList(name, info, birthYear, bands, formerBands, instruments) {
+
+    // var today = new Date();
+    // var year = today.getFullYear();
+    // var month = (today.getMonth() + 1).toString(),padStart(2, '0');
+    // var day = today.getDate().toString().padStart(2, '0');
+    // var formattedDate = year + month + day;
+
     do {
       name = prompt("Enter the musician's name - ");
       if (name.length <= 1) {
@@ -43,11 +52,11 @@ export default class Musicians {
     info = prompt("Enter any info about the musician here if you want - ");
 
     do {
-      birthYear = prompt("Enter the musician's birthyear (4 numbers) - ");
-      if (birthYear.length !== 4 || isNaN(birthYear)) {
+      birthYear = prompt("Enter the musician's birthyear (yyyymmdd) - ");
+      if (birthYear.length !== 8) {
         console.log("You did not enter a valid year)!");
       }
-    } while (birthYear.length !== 4 || isNaN(birthYear));
+    } while (birthYear.length !== 8);
 
     do {
       bands = prompt("Enter the musician's bands (separate with commas) - ");
