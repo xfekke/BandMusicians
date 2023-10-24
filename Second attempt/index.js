@@ -8,15 +8,15 @@ import fs from "fs";
 
 import bandsData from './bands.json' assert { type: 'json' };
 
-    // const date = new Date();
+// const date = new Date();
 
-    // let day = date.getDate();
-    // let month = date.getMonth() + 1;
-    // let year = date.getFullYear();
+// let day = date.getDate();
+// let month = date.getMonth() + 1;
+// let year = date.getFullYear();
 
 
-    // let currentDate = `${year}${month}${day}`;
-    //   console.log(currentDate); 
+// let currentDate = `${year}${month}${day}`;
+//   console.log(currentDate); 
 
 
 
@@ -54,25 +54,26 @@ while (run) {
 
       break;
 
-    case "3": //show musician
+    case "3": //show musician //WORKS
+      musicianList.printMusician();
 
 
       break;
 
-    case "4": //show band
-
-
-
-      break;
-
-    case "5": //remove musician
-      removeMusician();
+    case "4": //show band //WORKS
+      bandList.printBand();
 
 
       break;
 
-    case "6": //remove band
-      removeBand();
+    case "5": //remove musician //WORKS
+      musicianList.removeMusician();
+
+
+      break;
+
+    case "6": //remove band //WORKS
+      bandList.removeBand();
 
       break;
 
@@ -101,25 +102,14 @@ function removeMusician() {
   }
 }
 
-function removeBand() {
-  const removingBandList = JSON.parse(fs.readFileSync("bands.json"));
-  bandList.printBand();
-  const val = prompt("Enter the index of the band you want to remove - ");
-
-  if (Number(val).toString() === "NaN" || val <= bandList.getLength()) {
-    console.log("You have to enter a valid number!");
-  } else {
-    const index = parseInt(val) - 1;
-  }
-
-  removeBandFromList();
-
-
-  }
 
 
 
-  
+
+
+
+
+
 
 
 //LISTA är informationen i JSON, det är en separat array

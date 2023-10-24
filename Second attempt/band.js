@@ -142,4 +142,18 @@ export default class Bands {
   getLength() {
     return this.#bandList.length;
   }
+
+  removeBand() {
+    this.printBand();
+
+    const index = prompt("Enter the index of the band you want to remove - ");
+    const parsedIndex = parseInt(index);
+
+    if (!isNaN(parsedIndex) && parsedIndex >= 1 && parsedIndex <= this.#bandList.length) {
+      this.removeBandFromList(parsedIndex - 1);
+      console.log(`Band at index ${parsedIndex} has been removed.`);
+    } else {
+      console.log("Invalid index. Please enter a valid index.");
+    }
+  }
 } 

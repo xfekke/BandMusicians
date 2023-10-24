@@ -99,9 +99,22 @@ export default class Musicians {
     });
   }
 
+  removeMusician() {
+    this.printMusician();
 
+    const index = prompt("Enter the index of the musician you want to remove - ");
+    const parsedIndex = parseInt(index);
+
+    if (!isNaN(parsedIndex) && parsedIndex >= 1 && parsedIndex <= this.#musicianList.length) {
+      this.removeMusicianFromList(parsedIndex - 1);
+      console.log(`Band at index ${parsedIndex} has been removed.`);
+    } else {
+      console.log("Invalid index. Please enter a valid index.");
+    }
+  }
 
   getLength() {
     return this.#musicianList.length;
   }
+
 } 
