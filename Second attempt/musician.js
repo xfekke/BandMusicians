@@ -99,6 +99,10 @@ export default class Musicians {
     });
   }
 
+  getLength() {
+    return this.#musicianList.length;
+  }
+
   removeMusician() {
     this.printMusician();
 
@@ -108,13 +112,10 @@ export default class Musicians {
     if (!isNaN(parsedIndex) && parsedIndex >= 1 && parsedIndex <= this.#musicianList.length) {
       this.removeMusicianFromList(parsedIndex - 1);
       console.log(`Musician at index ${parsedIndex} has been removed.`);
+      return; //breaks the loop
     } else {
       console.log("Invalid index. Please enter a valid index.");
     }
-  }
-
-  getLength() {
-    return this.#musicianList.length;
   }
 
 } 

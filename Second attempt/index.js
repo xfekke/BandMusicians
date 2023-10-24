@@ -29,7 +29,7 @@ let menyOption; //Meny variable
 
 let run = true
 
-while (run) {
+do {
   console.log("Hello! What would you like to do?")
   console.log("1. Create musician")
   console.log("2. Create band")
@@ -70,22 +70,22 @@ while (run) {
       musicianList.removeMusician();
 
       //WIP
+      const removedMusicianName = musicianList.removeMusician();
+      console.log(removedMusicianName)
       const jsonStringBands = fs.readFileSync("bands.json");
       const bandsData = JSON.parse(jsonStringBands);
 
+      console.log(removedMusicianName);
 
-      for (const band of bandsData) {
-        const members = band.members.split(", "); // members seperated by commas
+      // for (const band of bandsData) {
+      //   const members = band.members.split(", "); // members seperated by commas
 
-        const musicianIndex = members.indexOf(removedMusicianName);
+      //   const musicianIndex = members.indexOf(removedMusicianName);
 
-        if (musicianIndex !== -1) {
-          // removes musician out of the band
-          members.splice(musicianIndex, 1);
-          band.members = members.join(", ");
-          console.log(`Musikern ${removedMusicianName} har tagits bort från bandet ${band.name}.`);
-        }
-      }
+      //   this.bandList.splice(band.members = musicianIndex);
+      //   break;
+      // }
+
 
 
       fs.writeFileSync("bands.json", JSON.stringify(bandsData, null, 2));
@@ -105,7 +105,7 @@ while (run) {
 
 
   }
-}
+} while (run);
 
 
 
