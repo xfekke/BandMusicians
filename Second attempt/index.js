@@ -66,11 +66,31 @@ while (run) {
 
       break;
 
-    case "5": //remove musician //WORKS
+    case "5": //remove musician //WORKS with removing only musician
       musicianList.removeMusician();
 
+      //WIP
+      const jsonStringBands = fs.readFileSync("bands.json");
+      const bandsData = JSON.parse(jsonStringBands);
 
+
+      for (const band of bandsData) {
+        const members = band.members.split(", "); // members seperated by commas
+
+        const musicianIndex = members.indexOf(removedMusicianName);
+
+        if (musicianIndex !== -1) {
+          // removes musician out of the band
+          members.splice(musicianIndex, 1);
+          band.members = members.join(", ");
+          console.log(`Musikern ${removedMusicianName} har tagits bort från bandet ${band.name}.`);
+        }
+      }
+
+
+      fs.writeFileSync("bands.json", JSON.stringify(bandsData, null, 2));
       break;
+
 
     case "6": //remove band //WORKS
       bandList.removeBand();
@@ -87,20 +107,7 @@ while (run) {
   }
 }
 
-function removeMusician() {
-  musicianList.printMusician();
-  const val = prompt("Enter the index of the musician you want to remove - ");
 
-  if (Number(val).toString() === "NaN") {
-    console.log("You have to enter a number!");
-  }
-
-  if (val <= musicianList.getLength() || val >= 1) {
-    musicianList.removeMusicianFromList(Number(val) - 1);
-  } else {
-    console.log(`The number has to be between 1 and ${musicianList.getLength()}`);
-  }
-}
 
 
 

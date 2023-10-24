@@ -107,7 +107,7 @@ export default class Musicians {
 
     if (!isNaN(parsedIndex) && parsedIndex >= 1 && parsedIndex <= this.#musicianList.length) {
       this.removeMusicianFromList(parsedIndex - 1);
-      console.log(`Band at index ${parsedIndex} has been removed.`);
+      console.log(`Musician at index ${parsedIndex} has been removed.`);
     } else {
       console.log("Invalid index. Please enter a valid index.");
     }
