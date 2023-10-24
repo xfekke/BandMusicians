@@ -81,8 +81,9 @@ export default class Musicians {
   }
 
   removeMusicianFromList(index) {
-    this.#musicianList.splice(index, 1); // removes musician from list
+    var removedMusician = this.#musicianList.splice(index, 1); // removes musician from list
     this.#updateJsonFile(); // updates the json
+    return removedMusician;
   }
 
   #updateJsonFile() {
@@ -105,14 +106,15 @@ export default class Musicians {
 
   removeMusician() {
     this.printMusician();
+    var removedMusician = null;
 
     const index = prompt("Enter the index of the musician you want to remove - ");
     const parsedIndex = parseInt(index);
 
     if (!isNaN(parsedIndex) && parsedIndex >= 1 && parsedIndex <= this.#musicianList.length) {
-      this.removeMusicianFromList(parsedIndex - 1);
+      removedMusician = this.removeMusicianFromList(parsedIndex - 1);
       console.log(`Musician at index ${parsedIndex} has been removed.`);
-      return; //breaks the loop
+      return removedMusician;
     } else {
       console.log("Invalid index. Please enter a valid index.");
     }

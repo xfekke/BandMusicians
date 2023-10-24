@@ -67,28 +67,35 @@ do {
       break;
 
     case "5": //remove musician //WORKS with removing only musician
-      musicianList.removeMusician();
-
-      //WIP
+      //WIP6
       const removedMusicianName = musicianList.removeMusician();
-      console.log(removedMusicianName)
       const jsonStringBands = fs.readFileSync("bands.json");
       const bandsData = JSON.parse(jsonStringBands);
+      var bandsDataCopy = [];
 
-      console.log(removedMusicianName);
+      console.log(removedMusicianName[0].name);
 
-      // for (const band of bandsData) {
-      //   const members = band.members.split(", "); // members seperated by commas
+      for (const band of bandsData) {
+        const members = band.members.split(", "); // members seperated by commas
+        console.log(members);
+        const musicianIndex = members.indexOf(removedMusicianName[0].name);
+        console.log(musicianIndex);
 
-      //   const musicianIndex = members.indexOf(removedMusicianName);
+        if (musicianIndex != -1) {
+          members.splice(musicianIndex)
 
-      //   this.bandList.splice(band.members = musicianIndex);
-      //   break;
-      // }
+        }
+
+        var membersNew = members.join(", ");
+        band.members = membersNew
+        if (membersNew != []) {
+          bandsDataCopy.push(band);
+        }
+      }
 
 
 
-      fs.writeFileSync("bands.json", JSON.stringify(bandsData, null, 2));
+      fs.writeFileSync("bands.json", JSON.stringify(bandsDataCopy, null, 2));
       break;
 
 
