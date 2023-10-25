@@ -84,32 +84,27 @@ do {
       break;
 
     case "6": //remove band //WORKS kind of, does not delete bands from musicians, loops forever //ifall band inte har medlemmar?
-
-      //WIP
-      const removedBandName = bandList.removeBand();
+      const removeBandName = bandList.removeBand();
       const jsonStringMusician = fs.readFileSync("musician.json");
       const musiciansData = JSON.parse(jsonStringMusician);
-      var musicianDataCopy = [];
-
-      console.log(removedBandName[0].bands);
+      const musicianDataCopy = [];
 
       for (const musician of musiciansData) {
-        const bands = musician.bands.split(", "); // bands seperated by commas
-        const bandIndex = bands.indexOf(removedBandName[0].bands);
-        console.log(bandIndex);
 
+        let bands = musician.bands;
 
-        if (bandIndex != -1) {
-          bands.splice(bandIndex);
+        bands = bands.split(', ')
 
+        let bands_new = "";
+        for (let band of bands) {
+          if (band !== removeBandName)
+            bands_new += band + ", "
         }
-
-        var bandsNew = bands.join(", ");
-        musician.bands = bandsNew;
-        if (bandsNew != []) {
-          musicianDataCopy.push(musician);
-        }
+        bands_new = bands_new.substring(0, bands_new.length - 2) // remove the last ",-" from new string
+        musician.bands = bands_new; //the old musicians.bands updated with the new one
+        musicianDataCopy.push(musician);
       }
+      fs.writeFileSync("musician.json", JSON.stringify(musicianDataCopy, null, 2)); // we write the new array out
 
       break;
 
@@ -122,33 +117,3 @@ do {
 
   }
 } while (run);
-
-
-
-
-
-
-
-
-
-
-
-
-
-//LISTA är informationen i JSON, det är en separat array
-//const LISTA = JSON.parse(fs.readFileSync("min json fil.json"))
-//console.log(LISTA);
-//LISTA.push("en msuiker t ex") //Här lägger vi till nytt objekt //lista.musiker = "Bengt"
-//LISTA.sort //sortera
-//fs.writeFileSync(LISTA)
-
-//data.push("Bengt") --- data.push("Personer")
-
-//const index = lista.findIndex((a) => a === "Emil") //Nu är Emil 0, position 1
-
-//LISTA[index] = {
-//  name: lista[index],
-//  age: 54
-//} Nu är Emil ett objekt och har age + name
-
-//måste kunna välja de instrument
