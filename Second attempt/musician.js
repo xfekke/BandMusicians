@@ -34,16 +34,6 @@ export default class Musicians {
     }
   }
 
-  printMusicianInfo() {
-    const selectedMusician = this.#musicianList[index];
-      console.log(`Name: ${this.#musicianList.name}`);
-      console.log(`Info: ${this.#musicianList.info}`);
-      console.log(`Birthyear: ${this.#musicianList.birthYear}`);
-      console.log(`Bands: ${this.#musicianList.bands}`);
-      console.log(`Former bands: ${this.#musicianList.formerBands}`);
-      console.log(`Instruments: ${this.#musicianList.instruments}`);
-    
-  }
 
   addMusicianToList(name, info, birthYear, bands, formerBands, instruments) {
 
@@ -131,20 +121,32 @@ export default class Musicians {
     }
   }
 
-  printMusicianInfoAll() {
-    this.printMusician();
-    var infoMusician = null;
+  printMusicianInfo() {
+    const jsonStringMusic = fs.readFileSync("musician.json");
+    const jsonData = JSON.parse(jsonStringMusic);
+    //this.printMusician();
 
-    const index = prompt("Enter the index of the musician you want to remove - ");
-    const parsedIndex = parseInt(index);
-
-    if (!isNaN(parsedIndex) && parsedIndex >= 1 && parsedIndex <= this.#musicianList.length) {
-      infoMusician = this.printMusicianInfo(parsedIndex - 1);
-      console.log(`Here is the information:`);
-      return infoMusician;
+    jsonData.forEach((musician, index) => {
+      console.log(`${index + 1}. ${musician.name}`);
+    });
+  
+   
+    const selectedNumber = prompt("Enter the number of the musician you want to see info about - ");
+    const selectedIndex = parseInt(selectedNumber) - 1;
+  
+    
+    if (!isNaN(selectedIndex) && selectedIndex >= 0 && selectedIndex < jsonData.length) {
+      const selectedMusician = jsonData[selectedIndex];
+      console.log(`Name: ${selectedMusician.name}`);
+      console.log(`Info: ${selectedMusician.info}`);
+      console.log(`Birthyear: ${selectedMusician.birthYear}`);
+      console.log(`Bands: ${selectedMusician.bands}`);
+      console.log(`Former bands: ${selectedMusician.formerBands}`);
     } else {
-      console.log("Invalid index. Please enter a valid index.");
+      console.log("Invalid number or musician does not exist.");
     }
   }
+
+  
 
 } 
