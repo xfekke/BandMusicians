@@ -103,7 +103,7 @@ do {
       const musiciansData = JSON.parse(jsonStringMusician);
       var musicianDataCopy = [];
 
-      console.log(removedBandName[0].name);
+      console.log(removedBandName[0].members);
 
       for (const musician of musiciansData) {
         const bands = musician.bands.split(", "); // bands seperated by commas
