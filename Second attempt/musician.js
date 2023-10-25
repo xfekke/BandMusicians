@@ -37,12 +37,6 @@ export default class Musicians {
 
   addMusicianToList(name, info, birthYear, bands, formerBands, instruments) {
 
-    // var today = new Date();
-    // var year = today.getFullYear();
-    // var month = (today.getMonth() + 1).toString(),padStart(2, '0');
-    // var day = today.getDate().toString().padStart(2, '0');
-    // var formattedDate = year + month + day;
-
     do {
       name = prompt("Enter the musician's name - ");
       if (name.length <= 1) {
@@ -125,6 +119,8 @@ export default class Musicians {
     const jsonStringMusic = fs.readFileSync("musician.json");
     const jsonData = JSON.parse(jsonStringMusic);
 
+    todaysDate = this.todayDate();
+
     jsonData.forEach((musician, index) => {
       console.log(`${index + 1}. ${musician.name}`);
     });
@@ -144,6 +140,49 @@ export default class Musicians {
     } else {
       console.log("Invalid number or musician does not exist.");
     }
+  }
+  todayDate() {
+    // Date object
+    const date = new Date();
+
+    let currentDay= String(date.getDate()).padStart(2, '0');
+
+    let currentMonth = String(date.getMonth()+1).padStart(2,"0");
+
+    let currentYear = date.getFullYear();
+
+    //will display the date as YYYYMMDD 
+
+    let currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
+
+    console.log("The current date is " + currentDate); 
+
+  }
+
+  countAge() {
+    var birthDateStr = musicianList.birthYear;
+    
+    var todayStr = todayDate();
+
+    var birthYear = parseInt(birthDateStr.substr(0, 4));
+    var birthMonth = parseInt(birthDateStr.substr(4, 2)) - 1; 
+    var birthDay = parseInt(birthDateStr.substr(6, 2));
+  
+    var todayYear = parseInt(todayStr.substr(0, 4));
+    var todayMonth = parseInt(todayStr.substr(4, 2)) - 1; 
+    var todayDay = parseInt(todayStr.substr(6, 2));
+  
+    var birthDate = new Date(birthYear, birthMonth, birthDay);
+    var todayDate = new Date(todayYear, todayMonth, todayDay);
+  
+    var age = todayYear - birthDate;
+  
+    if (todayMonth < birthMonth || (todayMonth === birthMonth && todayDay < birthDay)) {
+      age--;
+    }
+  
+    console.log("Ålder: " + age);
+
   }
 
   

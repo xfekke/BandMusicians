@@ -24,6 +24,10 @@ const prompt = PromptSync({ sigint: true })
 const musicianList = new Musicians();
 const bandList = new Bands();
 let menyOption; //Meny variable
+
+
+//console.log("The current date is " + currentDate); 
+
 //1. Add Musician - 2. Add Band - 3. Remove musician - 4. Remove Band - 5. Add musician to band - 6. remove musician from band
 //7. Info about musician - 8. Info about band - 9. Quit //Add member to band //Remove Musician from band
 
@@ -55,7 +59,6 @@ do {
       break;
 
     case "3": //show musician //WORKS!
-
       musicianList.printMusicianInfo();
 
       break;
