@@ -119,72 +119,45 @@ export default class Musicians {
     const jsonStringMusic = fs.readFileSync("musician.json");
     const jsonData = JSON.parse(jsonStringMusic);
 
-    todaysDate = this.todayDate();
 
     jsonData.forEach((musician, index) => {
       console.log(`${index + 1}. ${musician.name}`);
     });
-  
-   
+
+
+
     const selectedNumber = prompt("Enter the number of the musician you want to see info about - ");
     const selectedIndex = parseInt(selectedNumber) - 1;
-  
-    
+
+
     if (!isNaN(selectedIndex) && selectedIndex >= 0 && selectedIndex < jsonData.length) {
       const selectedMusician = jsonData[selectedIndex];
+      const currentYear = new Date().getFullYear();
+      const currentMonth = new Date().getMonth() + 1;
+      const currentDay = new Date().getDate();
+
+      const birthYearStr = selectedMusician.birthYear.toString();
+      const birthYearNum = parseInt(birthYearStr.substring(0, 4));
+      const birthMonthNum = parseInt(birthYearStr.substring(4, 6));
+      const birthDayNum = parseInt(birthYearStr.substring(6, 8));
+
+      let age = currentYear - birthYearNum;
+
+
+      if (currentMonth < birthMonthNum || (currentMonth === birthMonthNum && currentDay < birthDayNum)) {
+        age--;
+      }
       console.log(`Name: ${selectedMusician.name}`);
       console.log(`Info: ${selectedMusician.info}`);
-      console.log(`Birthyear: ${selectedMusician.birthYear}`);
+      console.log(`Age: ${age}`);
       console.log(`Bands: ${selectedMusician.bands}`);
       console.log(`Former bands: ${selectedMusician.formerBands}`);
     } else {
       console.log("Invalid number or musician does not exist.");
     }
-  }
-  todayDate() {
-    // Date object
-    const date = new Date();
 
-    let currentDay= String(date.getDate()).padStart(2, '0');
 
-    let currentMonth = String(date.getMonth()+1).padStart(2,"0");
-
-    let currentYear = date.getFullYear();
-
-    //will display the date as YYYYMMDD 
-
-    let currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
-
-    console.log("The current date is " + currentDate); 
 
   }
-
-  countAge() {
-    var birthDateStr = musicianList.birthYear;
-    
-    var todayStr = todayDate();
-
-    var birthYear = parseInt(birthDateStr.substr(0, 4));
-    var birthMonth = parseInt(birthDateStr.substr(4, 2)) - 1; 
-    var birthDay = parseInt(birthDateStr.substr(6, 2));
-  
-    var todayYear = parseInt(todayStr.substr(0, 4));
-    var todayMonth = parseInt(todayStr.substr(4, 2)) - 1; 
-    var todayDay = parseInt(todayStr.substr(6, 2));
-  
-    var birthDate = new Date(birthYear, birthMonth, birthDay);
-    var todayDate = new Date(todayYear, todayMonth, todayDay);
-  
-    var age = todayYear - birthDate;
-  
-    if (todayMonth < birthMonth || (todayMonth === birthMonth && todayDay < birthDay)) {
-      age--;
-    }
-  
-    console.log("Ålder: " + age);
-
-  }
-
-  
 
 } 
