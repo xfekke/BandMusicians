@@ -59,6 +59,15 @@ do {
       break;
 
     case "3": //show musician //WORKS!
+      const today = new Date();
+
+      const year = today.getFullYear();
+      const month = today.getMonth() + 1; // Månader är 0-baserade, så vi lägger till 1.
+      const day = today.getDate();
+
+      const formattedDate = `${year}${month.toString().padStart(2, '0')}${day.toString().padStart(2, '0')}`;
+
+      console.log(formattedDate);
       musicianList.printMusicianInfo();
 
       break;

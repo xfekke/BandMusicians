@@ -19,5 +19,20 @@
     "birthYear": "19980425",
     "bands": "Slipknot",
     "formerBands": "Megadeth"
+  },
+  {
+    "name": "Olof",
+    "info": "ja",
+    "birthYear": "20220411",
+    "bands": "Thrown",
+    "formerBands": ""
+  },
+  {
+    "name": "Pelle",
+    "info": "dsdsds",
+    "birthYear": "19100101",
+    "bands": "19200201",
+    "formerBands": "Iron Maiden",
+    "intruments": "Vocalist"
   }
 ]

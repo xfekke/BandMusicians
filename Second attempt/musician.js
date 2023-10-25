@@ -36,6 +36,15 @@ export default class Musicians {
 
 
   addMusicianToList(name, info, birthYear, bands, formerBands, instruments) {
+    const today = new Date();
+
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1;
+    const day = today.getDate();
+
+    const formattedDate = `${year}${month.toString().padStart(2, '0')}${day.toString().padStart(2, '0')}`;
+
+    // console.log("Dagens datum är: " + formattedDate);
 
     do {
       name = prompt("Enter the musician's name - ");
@@ -48,7 +57,7 @@ export default class Musicians {
 
     do {
       birthYear = prompt("Enter the musician's birthyear (yyyymmdd) - ");
-      if (birthYear.length !== 8) {
+      if (birthYear.length !== 8 || birthYear > formattedDate || birthYear < 19200101) {
         console.log("You did not enter a valid year)!");
       }
     } while (birthYear.length !== 8);
