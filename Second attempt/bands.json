@@ -1,14 +1,15 @@
 [
   {
-    "name": "Megadeth",
-    "info": "ye",
-    "disbandedYear": "19980425",
-    "members": "Joppe"
-  },
-  {
     "name": "MIW",
     "info": "ye",
     "disbandedYear": "19980425",
-    "members": "Chris, Joppe"
+    "members": "Chris"
+  },
+  {
+    "name": "Slipknot",
+    "info": "ye",
+    "formedYear": "19980425",
+    "members": "Chris",
+    "formerMembers": "Molgan"
   }
 ]

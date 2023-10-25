@@ -96,33 +96,36 @@ do {
       fs.writeFileSync("bands.json", JSON.stringify(bandsDataCopy, null, 2));
       break;
 
-    case "6": //remove band //WORKS
+    case "6": //remove band //WORKS //ifall band inte har medlemmar?
       bandList.removeBand();
 
       //WIP
       const removedBandName = bandList.removeBand();
       const jsonStringMusician = fs.readFileSync("musician.json");
-      const musicianData = JSON.parse(jsonStringMusician);
+      const musiciansData = JSON.parse(jsonStringMusician);
       var musicianDataCopy = [];
 
       console.log(removedBandName[0].name);
 
-      for (const musician of musicianData) {
+      for (const musician of musiciansData) {
         const bands = musician.bands.split(", "); // bands seperated by commas
         console.log(bands);
         const bandIndex = members.indexOf(removedBandName[0].bands);
         console.log(bandIndex);
 
         if (bandIndex != -1) {
-          members.splice(bandIndex)
+          members.splice(bandIndex);
 
         }
+        console.log(bandIndex);
 
         var bandsNew = bands.join(", ");
         musician.bands = bandsNew
+
         if (bandsNew != []) {
           musicianDataCopy.push(musician);
         }
+        console.log(bandsNew);
       }
 
       break;
