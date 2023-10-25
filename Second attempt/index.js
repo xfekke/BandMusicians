@@ -66,7 +66,6 @@ do {
       for (const band of bandsData) {
         const members = band.members.split(", "); // members seperated by commas
         const musicianIndex = members.indexOf(removedMusicianName[0].name);
-        console.log(`Musician ${removedMusicianName[0].name} has been removed`)
 
         if (musicianIndex != -1) {
           members.splice(musicianIndex)
