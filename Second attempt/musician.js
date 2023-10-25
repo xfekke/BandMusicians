@@ -34,6 +34,17 @@ export default class Musicians {
     }
   }
 
+  printMusicianInfo() {
+    const selectedMusician = this.#musicianList[index];
+      console.log(`Name: ${this.#musicianList.name}`);
+      console.log(`Info: ${this.#musicianList.info}`);
+      console.log(`Birthyear: ${this.#musicianList.birthYear}`);
+      console.log(`Bands: ${this.#musicianList.bands}`);
+      console.log(`Former bands: ${this.#musicianList.formerBands}`);
+      console.log(`Instruments: ${this.#musicianList.instruments}`);
+    
+  }
+
   addMusicianToList(name, info, birthYear, bands, formerBands, instruments) {
 
     // var today = new Date();
@@ -115,6 +126,22 @@ export default class Musicians {
       removedMusician = this.removeMusicianFromList(parsedIndex - 1);
       console.log(`Musician at index ${parsedIndex} has been removed.`);
       return removedMusician;
+    } else {
+      console.log("Invalid index. Please enter a valid index.");
+    }
+  }
+
+  printMusicianInfoAll() {
+    this.printMusician();
+    var infoMusician = null;
+
+    const index = prompt("Enter the index of the musician you want to remove - ");
+    const parsedIndex = parseInt(index);
+
+    if (!isNaN(parsedIndex) && parsedIndex >= 1 && parsedIndex <= this.#musicianList.length) {
+      infoMusician = this.printMusicianInfo(parsedIndex - 1);
+      console.log(`Here is the information:`);
+      return infoMusician;
     } else {
       console.log("Invalid index. Please enter a valid index.");
     }

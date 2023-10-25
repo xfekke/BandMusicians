@@ -55,8 +55,8 @@ do {
       break;
 
     case "3": //show musician //WORKS
-      musicianList.printMusician();
 
+      musicianList.printMusicianInfoAll();
 
       break;
 
