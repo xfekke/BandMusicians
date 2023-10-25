@@ -93,14 +93,37 @@ do {
         }
       }
 
-
-
       fs.writeFileSync("bands.json", JSON.stringify(bandsDataCopy, null, 2));
       break;
 
-
     case "6": //remove band //WORKS
       bandList.removeBand();
+
+      //WIP
+      const removedBandName = bandList.removeBand();
+      const jsonStringMusician = fs.readFileSync("musician.json");
+      const musicianData = JSON.parse(jsonStringMusician);
+      var musicianDataCopy = [];
+
+      console.log(removedBandName[0].name);
+
+      for (const musician of musicianData) {
+        const bands = musician.bands.split(", "); // bands seperated by commas
+        console.log(bands);
+        const bandIndex = members.indexOf(removedBandName[0].bands);
+        console.log(bandIndex);
+
+        if (bandIndex != -1) {
+          members.splice(bandIndex)
+
+        }
+
+        var bandsNew = bands.join(", ");
+        musician.bands = bandsNew
+        if (bandsNew != []) {
+          musicianDataCopy.push(musician);
+        }
+      }
 
       break;
 
