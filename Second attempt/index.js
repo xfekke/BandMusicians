@@ -9,7 +9,7 @@ import bandsData from './bands.json' assert { type: 'json' };
 const prompt = PromptSync({ sigint: true })
 const musicianList = new Musicians();
 const bandList = new Bands();
-let menyOption; //Meny variable
+let menyOption;
 
 let run = true
 
@@ -27,22 +27,21 @@ do {
 
   switch (menyOption.trim().toUpperCase()) {
 
-    case "1": //create Musician WORKS
+    case "1": 
       musicianList.addMusicianToList();
 
       break;
 
-    case "2": //create band WORKS
+    case "2": 
       bandList.addBandToList();
-
 
       break;
 
-    case "3": //show musician //WORKS!
+    case "3": 
       const today = new Date();
 
       const year = today.getFullYear();
-      const month = today.getMonth() + 1; // Månader är 0-baserade, så vi lägger till 1.
+      const month = today.getMonth() + 1;
       const day = today.getDate();
 
       const formattedDate = `${year}${month.toString().padStart(2, '0')}${day.toString().padStart(2, '0')}`;
@@ -52,19 +51,19 @@ do {
 
       break;
 
-    case "4": //show band //WORKS!
+    case "4":
       bandList.printBandInfo();
 
       break;
 
-    case "5": //remove musician //WORKS!!
+    case "5":
       const removedMusicianName = musicianList.removeMusician();
       const jsonStringBands = fs.readFileSync("bands.json");
       const bandsData = JSON.parse(jsonStringBands);
       var bandsDataCopy = [];
 
       for (const band of bandsData) {
-        const members = band.members.split(", "); // members seperated by commas
+        const members = band.members.split(", "); 
         const musicianIndex = members.indexOf(removedMusicianName[0].name);
 
         if (musicianIndex != -1) {
@@ -79,11 +78,10 @@ do {
         }
       }
 
-
       fs.writeFileSync("bands.json", JSON.stringify(bandsDataCopy, null, 2));
       break;
 
-    case "6": //remove band //WORKS kind of, does not delete bands from musicians, loops forever //ifall band inte har medlemmar?
+    case "6":
       const removeBandName = bandList.removeBand();
       const jsonStringMusician = fs.readFileSync("musician.json");
       const musiciansData = JSON.parse(jsonStringMusician);
@@ -100,11 +98,11 @@ do {
           if (band !== removeBandName)
             bands_new += band + ", "
         }
-        bands_new = bands_new.substring(0, bands_new.length - 2) // remove the last ",-" from new string
-        musician.bands = bands_new; //the old musicians.bands updated with the new one
+        bands_new = bands_new.substring(0, bands_new.length - 2)
+        musician.bands = bands_new;
         musicianDataCopy.push(musician);
       }
-      fs.writeFileSync("musician.json", JSON.stringify(musicianDataCopy, null, 2)); // we write the new array out
+      fs.writeFileSync("musician.json", JSON.stringify(musicianDataCopy, null, 2));
 
       break;
 
@@ -113,7 +111,6 @@ do {
       run = false
 
       break;
-
 
   }
 } while (run);

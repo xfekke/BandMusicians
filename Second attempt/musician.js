@@ -6,7 +6,7 @@ const prompt = PromptSync({ sigint: true })
 
 
 export default class Musicians {
-  #musicianList = []; // list with all musician objects
+  #musicianList = []; 
 
   constructor() {
     this.#fetchMusicData();
@@ -16,24 +16,20 @@ export default class Musicians {
     return this.#musicianList;
   }
 
-  // reads all musicians in the json 
   #fetchMusicData() {
     const jsonStringMusic = fs.readFileSync("musician.json");
     const data = JSON.parse(jsonStringMusic);
 
-    // getting all methods in musicianlist
     for (let i = 0; i < data.length; i++) {
       this.#musicianList.push(new Musician(data[i].name, data[i].info, data[i].birthYear, data[i].bands, data[i].formerBands, data[i].instruments));
     }
   }
 
-  //prints index and musician list
   printMusician() {
     for (let i = 0; i < this.#musicianList.length; i++) {
       console.log(`${i + 1}. ${this.#musicianList[i].name}`);
     }
   }
-
 
   addMusicianToList(name, info, birthYear, bands, formerBands, instruments) {
     const today = new Date();
@@ -43,8 +39,6 @@ export default class Musicians {
     const day = today.getDate();
 
     const formattedDate = `${year}${month.toString().padStart(2, '0')}${day.toString().padStart(2, '0')}`;
-
-    // console.log("Dagens datum är: " + formattedDate);
 
     do {
       name = prompt("Enter the musician's name - ");
@@ -80,18 +74,18 @@ export default class Musicians {
 
 
     const newMusician = new Musician(name, info, birthYear, bands, formerBands, instruments);
-    this.#musicianList.push(newMusician); // adds new musician to list
-    this.#updateJsonFile(); // updates the json
+    this.#musicianList.push(newMusician); 
+    this.#updateJsonFile(); 
   }
 
   removeMusicianFromList(index) {
-    var removedMusician = this.#musicianList.splice(index, 1); // removes musician from list
-    this.#updateJsonFile(); // updates the json
+    var removedMusician = this.#musicianList.splice(index, 1); 
+    this.#updateJsonFile(); 
     return removedMusician;
   }
 
   #updateJsonFile() {
-    let tempList = []; // creates temp list
+    let tempList = []; 
 
     for (let i = 0; i < this.#musicianList.length; i++) {
 
@@ -133,8 +127,6 @@ export default class Musicians {
       console.log(`${index + 1}. ${musician.name}`);
     });
 
-
-
     const selectedNumber = prompt("Enter the number of the musician you want to see info about - ");
     const selectedIndex = parseInt(selectedNumber) - 1;
 
@@ -152,7 +144,6 @@ export default class Musicians {
 
       let age = currentYear - birthYearNum;
 
-
       if (currentMonth < birthMonthNum || (currentMonth === birthMonthNum && currentDay < birthDayNum)) {
         age--;
       }
@@ -164,8 +155,6 @@ export default class Musicians {
     } else {
       console.log("Invalid number or musician does not exist.");
     }
-
-
 
   }
 

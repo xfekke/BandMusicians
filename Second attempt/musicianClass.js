@@ -43,7 +43,6 @@ export default class Musician {
     this.#name = newName;
   }
 
-
   dataInfo() {
     return {
       "name": this.#name,

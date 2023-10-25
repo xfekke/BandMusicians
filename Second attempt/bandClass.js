@@ -43,7 +43,6 @@ export default class Band {
     this.#name = newName;
   }
 
-
   dataInfoBand() {
     return {
       "name": this.#name,

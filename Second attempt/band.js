@@ -5,10 +5,8 @@ const prompt = PromptSync({ sigint: true })
 
 let bandDisbanded;
 
-
-
 export default class Bands {
-  #bandList = []; // list with all musician objects
+  #bandList = []; 
 
   constructor() {
     this.#fetchBandData();
@@ -18,18 +16,15 @@ export default class Bands {
     return this.#bandList;
   }
 
-  // reads all bands in the json 
   #fetchBandData() {
     const jsonStringBand = fs.readFileSync("bands.json");
     const data = JSON.parse(jsonStringBand);
 
-    // getting all methods in bandlist
     for (let i = 0; i < data.length; i++) {
       this.#bandList.push(new Band(data[i].name, data[i].info, data[i].disbandedYear, data[i].formedYear, data[i].members, data[i].formerMembers));
     }
   }
 
-  //prints index and bands list
   printBand() {
     for (let i = 0; i < this.#bandList.length; i++) {
       console.log(`${i + 1}. ${this.#bandList[i].name}`);
@@ -113,17 +108,17 @@ export default class Bands {
       console.log("You did not add any former members")
     }
     const newBand = new Band(name, info, formedYear, disbandedYear, members, formerMembers,);
-    this.#bandList.push(newBand); // adds new band to list
-    this.#updateJsonFile(); // updates the json
+    this.#bandList.push(newBand); 
+    this.#updateJsonFile(); 
   }
 
   removeBandFromList(index) {
-    this.#bandList.splice(index, 1); // removes band from list
-    this.#updateJsonFile(); // updates the json
+    this.#bandList.splice(index, 1); 
+    this.#updateJsonFile(); 
   }
 
   #updateJsonFile() {
-    let tempList = []; // creates temp list
+    let tempList = []; 
 
     for (let i = 0; i < this.#bandList.length; i++) {
 
@@ -136,8 +131,6 @@ export default class Bands {
     });
   }
 
-
-
   getLength() {
     return this.#bandList.length;
   }
@@ -149,7 +142,6 @@ export default class Bands {
     const parsedIndex = parseInt(index);
 
     if (!isNaN(parsedIndex) && parsedIndex >= 1 && parsedIndex <= this.#bandList.length) {
-      //this.removeBandFromList(parsedIndex - 1);
       console.log(`Band at index ${parsedIndex} has been removed.`);
       return this.#bandList[parsedIndex - 1].name;
     } else {
@@ -161,16 +153,13 @@ export default class Bands {
   printBandInfo() {
     const jsonStringBand = fs.readFileSync("bands.json");
     const jsonData = JSON.parse(jsonStringBand);
-    //this.printMusician();
 
     jsonData.forEach((band, index) => {
       console.log(`${index + 1}. ${band.name}`);
     });
 
-
     const selectedNumber = prompt("Enter the number of the band you want to see info about - ");
     const selectedIndex = parseInt(selectedNumber) - 1;
-
 
     if (!isNaN(selectedIndex) && selectedIndex >= 0 && selectedIndex < jsonData.length) {
       const selectedBand = jsonData[selectedIndex];
