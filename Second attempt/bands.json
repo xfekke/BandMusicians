@@ -1,21 +1,37 @@
 [
   {
-    "name": "Megadeth",
-    "info": "ye",
-    "disbandedYear": "19980425",
-    "members": "Joppe"
-  },
-  {
-    "name": "MIW",
-    "info": "oof",
-    "disbandedYear": "19980425",
-    "members": "Chris, Joppe"
+    "name": "Ultima",
+    "info": "sdds",
+    "disbandedYear": "19960422",
+    "members": "Torsten, Bror",
+    "formerMembers": "Torkel"
   },
   {
     "name": "Slipknot",
-    "info": "bä",
-    "disbandedYear": "19980425",
-    "members": "Per, Joppe",
-    "formerMembers": "Tor"
+    "info": "sdsdsd",
+    "disbandedYear": "19960606",
+    "members": "Corey, Joppe, Clown",
+    "formerMembers": "Joey"
+  },
+  {
+    "name": "Taco",
+    "info": "sddsds",
+    "disbandedYear": "20110104",
+    "formedYear": null,
+    "members": "Cappe"
+  },
+  {
+    "name": "yep",
+    "info": "ewwewe",
+    "disbandedYear": "20220101",
+    "formedYear": null,
+    "members": "Kalle"
+  },
+  {
+    "name": "Meep",
+    "info": "sdds",
+    "disbandedYear": "20210101",
+    "formedYear": null,
+    "members": "Felix"
   }
 ]

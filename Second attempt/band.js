@@ -52,7 +52,7 @@ export default class Bands {
       if (formedYear.length !== 8) {
         console.log("You did not enter a valid year!");
       }
-    } while (formedYear.length !== 8);
+    } while (formedYear.length !== 8 || isNaN(formedYear));
 
     do {
       console.log("Is the band still going?");
@@ -62,8 +62,8 @@ export default class Bands {
       bandDisbanded = prompt("Enter your option -");
 
       if (bandDisbanded === "2") {
-        disbandedYear = prompt("What year did they disband? (4 numbers) - ");
-        if (disbandedYear.length === 4 && !isNaN(disbandedYear)) {
+        disbandedYear = prompt("What year did they disband? (yyyymmdd) - ");
+        if (disbandedYear.length === 8 && !isNaN(disbandedYear)) {
           console.log(`The band disbanded in ${disbandedYear}.`);
           break;
         } else {
@@ -75,9 +75,10 @@ export default class Bands {
       } else {
         console.log("Invalid option. Please enter 1 or 2.");
       }
-    } while (true);
+    } while (!validInput);
 
     if (bandDisbanded == 1) {
+      disbandedYear = null;
       do {
         members = prompt("Enter the band's members (separate with commas) - ");
         if (members.length <= 1) {
@@ -87,8 +88,6 @@ export default class Bands {
         }
       } while (members.length <= 1);
     }
-
-
 
     if (bandDisbanded == 2) {
       do {
@@ -165,12 +164,12 @@ export default class Bands {
     jsonData.forEach((band, index) => {
       console.log(`${index + 1}. ${band.name}`);
     });
-  
-   
+
+
     const selectedNumber = prompt("Enter the number of the band you want to see info about - ");
     const selectedIndex = parseInt(selectedNumber) - 1;
-  
-    
+
+
     if (!isNaN(selectedIndex) && selectedIndex >= 0 && selectedIndex < jsonData.length) {
       const selectedBand = jsonData[selectedIndex];
       console.log(`Name: ${selectedBand.name}`);
