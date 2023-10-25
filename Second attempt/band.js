@@ -156,4 +156,31 @@ export default class Bands {
       console.log("Invalid index. Please enter a valid index.");
     }
   }
+
+  printBandInfo() {
+    const jsonStringBand = fs.readFileSync("bands.json");
+    const jsonData = JSON.parse(jsonStringBand);
+    //this.printMusician();
+
+    jsonData.forEach((band, index) => {
+      console.log(`${index + 1}. ${band.name}`);
+    });
+  
+   
+    const selectedNumber = prompt("Enter the number of the band you want to see info about - ");
+    const selectedIndex = parseInt(selectedNumber) - 1;
+  
+    
+    if (!isNaN(selectedIndex) && selectedIndex >= 0 && selectedIndex < jsonData.length) {
+      const selectedBand = jsonData[selectedIndex];
+      console.log(`Name: ${selectedBand.name}`);
+      console.log(`Info: ${selectedBand.info}`);
+      console.log(`Disbanded year: ${selectedBand.disbandedYear}`);
+      console.log(`Formed year: ${selectedBand.formedYear}`);
+      console.log(`Members: ${selectedBand.members}`);
+      console.log(`Former members: ${selectedBand.formerMembers}`);
+    } else {
+      console.log("Invalid number or band does not exist.");
+    }
+  }
 } 

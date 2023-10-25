@@ -124,7 +124,6 @@ export default class Musicians {
   printMusicianInfo() {
     const jsonStringMusic = fs.readFileSync("musician.json");
     const jsonData = JSON.parse(jsonStringMusic);
-    //this.printMusician();
 
     jsonData.forEach((musician, index) => {
       console.log(`${index + 1}. ${musician.name}`);

@@ -54,20 +54,19 @@ do {
 
       break;
 
-    case "3": //show musician //WORKS
+    case "3": //show musician //WORKS!
 
       musicianList.printMusicianInfo();
 
       break;
 
-    case "4": //show band //WORKS
-      bandList.printBand();
+    case "4": //show band //WORKS!
+      bandList.printBandInfo();
 
 
       break;
 
-    case "5": //remove musician //WORKS with removing only musician
-      //WIP6
+    case "5": //remove musician //WORKS!!
       const removedMusicianName = musicianList.removeMusician();
       const jsonStringBands = fs.readFileSync("bands.json");
       const bandsData = JSON.parse(jsonStringBands);
@@ -96,8 +95,7 @@ do {
       fs.writeFileSync("bands.json", JSON.stringify(bandsDataCopy, null, 2));
       break;
 
-    case "6": //remove band //WORKS //ifall band inte har medlemmar?
-      bandList.removeBand();
+    case "6": //remove band //WORKS kind of, does not delete bands from musicians, loops forever //ifall band inte har medlemmar?
 
       //WIP
       const removedBandName = bandList.removeBand();
@@ -120,7 +118,7 @@ do {
         console.log(bandIndex);
 
         var bandsNew = bands.join(", ");
-        musician.bands = bandsNew
+        musician.bands = bandsNew;
 
         if (bandsNew != []) {
           musicianDataCopy.push(musician);
