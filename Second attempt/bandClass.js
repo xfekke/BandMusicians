@@ -1,16 +1,16 @@
 export default class Band {
   #name;
   #info;
-  #disbandedYear;
   #formedYear;
+  #disbandedYear;
   #members;
   #formerMembers;
 
-  constructor(name, info, disbandedYear, formedYear, members, formerMembers) {
+  constructor(name, info, formedYear, disbandedYear, members, formerMembers) {
     this.#name = name;
     this.#info = info;
-    this.#disbandedYear = disbandedYear;
     this.#formedYear = formedYear;
+    this.#disbandedYear = disbandedYear;
     this.#members = members;
     this.#formerMembers = formerMembers;
   }
@@ -23,12 +23,12 @@ export default class Band {
     return this.#info;
   }
 
-  get disbandedYear() {
-    return this.#disbandedYear;
-  }
-
   get formedYear() {
     return this.#formedYear;
+  }
+
+  get disbandedYear() {
+    return this.#disbandedYear;
   }
 
   get members() {
@@ -48,8 +48,8 @@ export default class Band {
     return {
       "name": this.#name,
       "info": this.#info,
-      "disbandedYear": this.#disbandedYear,
       "formedYear": this.#formedYear,
+      "disbandedYear": this.#disbandedYear,
       "members": this.#members,
       "formerMembers": this.#formerMembers,
     };

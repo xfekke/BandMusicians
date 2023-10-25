@@ -27,12 +27,12 @@ do {
 
   switch (menyOption.trim().toUpperCase()) {
 
-    case "1": //create Musician
+    case "1": //create Musician WORKS
       musicianList.addMusicianToList();
 
       break;
 
-    case "2": //create band
+    case "2": //create band WORKS
       bandList.addBandToList();
 
 

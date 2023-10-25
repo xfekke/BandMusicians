@@ -2,36 +2,50 @@
   {
     "name": "Ultima",
     "info": "sdds",
-    "disbandedYear": "19960422",
+    "formedYear": "19960422",
     "members": "Torsten, Bror",
     "formerMembers": "Torkel"
   },
   {
     "name": "Slipknot",
     "info": "sdsdsd",
-    "disbandedYear": "19960606",
+    "formedYear": "19960606",
     "members": "Corey, Joppe, Clown",
     "formerMembers": "Joey"
   },
   {
     "name": "Taco",
     "info": "sddsds",
-    "disbandedYear": "20110104",
-    "formedYear": null,
+    "formedYear": "20110104",
+    "disbandedYear": null,
     "members": "Cappe"
   },
   {
     "name": "yep",
     "info": "ewwewe",
-    "disbandedYear": "20220101",
-    "formedYear": null,
+    "formedYear": "20220101",
+    "disbandedYear": null,
     "members": "Kalle"
   },
   {
     "name": "Meep",
     "info": "sdds",
-    "disbandedYear": "20210101",
-    "formedYear": null,
+    "formedYear": "20210101",
+    "disbandedYear": null,
     "members": "Felix"
+  },
+  {
+    "name": "Lell",
+    "info": "23232",
+    "formedYear": "20200101",
+    "disbandedYear": null,
+    "members": "Polly, Klas"
+  },
+  {
+    "name": "oooo",
+    "info": "ds",
+    "formedYear": "19980101",
+    "disbandedYear": "20211101",
+    "formerMembers": "Loke"
   }
 ]
