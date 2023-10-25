@@ -63,13 +63,10 @@ do {
       const bandsData = JSON.parse(jsonStringBands);
       var bandsDataCopy = [];
 
-      console.log(removedMusicianName[0].name);
-
       for (const band of bandsData) {
         const members = band.members.split(", "); // members seperated by commas
-        console.log(members);
         const musicianIndex = members.indexOf(removedMusicianName[0].name);
-        console.log(musicianIndex);
+        console.log(`Musician ${removedMusicianName[0].name} has been removed`)
 
         if (musicianIndex != -1) {
           members.splice(musicianIndex)
@@ -83,6 +80,7 @@ do {
         }
       }
 
+
       fs.writeFileSync("bands.json", JSON.stringify(bandsDataCopy, null, 2));
       break;
 
@@ -94,16 +92,16 @@ do {
       const musiciansData = JSON.parse(jsonStringMusician);
       var musicianDataCopy = [];
 
-      console.log(removedBandName[0].members);
+      console.log(removedBandName[0].bands);
 
       for (const musician of musiciansData) {
         const bands = musician.bands.split(", "); // bands seperated by commas
-        console.log(bands);
-        const bandIndex = members.indexOf(removedBandName[0].bands);
-        console.log(bandIndex);
+        //console.log(bands);
+        const bandIndex = bands.indexOf(removedBandName[0].bands);
+
 
         if (bandIndex != -1) {
-          members.splice(bandIndex);
+          bands.splice(bandIndex);
 
         }
         console.log(bandIndex);

@@ -151,6 +151,7 @@ export default class Bands {
     if (!isNaN(parsedIndex) && parsedIndex >= 1 && parsedIndex <= this.#bandList.length) {
       this.removeBandFromList(parsedIndex - 1);
       console.log(`Band at index ${parsedIndex} has been removed.`);
+      return this.#bandList[parsedIndex - 1].name;
     } else {
       console.log("Invalid index. Please enter a valid index.");
     }
