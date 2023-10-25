@@ -95,23 +95,20 @@ do {
 
       for (const musician of musiciansData) {
         const bands = musician.bands.split(", "); // bands seperated by commas
-        //console.log(bands);
         const bandIndex = bands.indexOf(removedBandName[0].bands);
+        console.log(bandIndex);
 
 
         if (bandIndex != -1) {
           bands.splice(bandIndex);
 
         }
-        console.log(bandIndex);
 
         var bandsNew = bands.join(", ");
         musician.bands = bandsNew;
-
         if (bandsNew != []) {
           musicianDataCopy.push(musician);
         }
-        console.log(bandsNew);
       }
 
       break;

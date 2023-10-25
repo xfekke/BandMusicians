@@ -32,7 +32,22 @@
     "info": "dsdsds",
     "birthYear": "19100101",
     "bands": "19200201",
-    "formerBands": "Iron Maiden",
-    "intruments": "Vocalist"
+    "formerBands": "Iron Maiden"
+  },
+  {
+    "name": "Jan",
+    "info": "sdsd",
+    "birthYear": "19920412",
+    "bands": "Megadeth, Slipknot",
+    "formerBands": "",
+    "intruments": "Guitar"
+  },
+  {
+    "name": "sddsds",
+    "info": "dsds",
+    "birthYear": "20201212",
+    "bands": "lel",
+    "formerBands": "bop, Slipknot",
+    "intruments": "Fire"
   }
 ]
